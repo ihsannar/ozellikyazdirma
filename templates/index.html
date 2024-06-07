@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Information</title>
+    <script>
+        function fetchSystemInfo() {
+            fetch('/api')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('İsletimSistemi').innerText = data.İsletimSistemi;
+                    document.getElementById('OS_Version').innerText = data.OS_Version;
+                    document.getElementById('OS_Release').innerText = data.OS_Release;
+                    document.getElementById('İslemci').innerText = data.İslemci;
+                    document.getElementById('İslemciHizi').innerText = data.İslemciHizi;
+                    document.getElementById('ÇekirdekSayisi').innerText = data.ÇekirdekSayisi;
+                    document.getElementById('MantıksalÇekirdekSayisi').innerText = data.MantıksalÇekirdekSayisi;
+                    document.getElementById('DiskKapasitesi').innerText = data.DiskKapasitesi;
+                    document.getElementById('DiskKullanılan').innerText = data.DiskKullanılan;
+                    document.getElementById('DiskBoş').innerText = data.DiskBoş;
+                    document.getElementById('Kullanılan RAM').innerText = data['Kullanılan RAM'];
+                    document.getElementById('Toplam RAM').innerText = data['Toplam RAM'];
+                    document.getElementById('Kullanılabilir RAM').innerText = data['Kullanılabilir RAM'];
+                });
+        }
+
+        setInterval(fetchSystemInfo, 5000);  // 5 saniyede bir verileri güncelle
+
+        window.onload = fetchSystemInfo;
+    </script>
+</head>
+<body>
+    <h1>System Information</h1>
+    <ul>
+        <li>İsletim Sistemi: <span id="İsletimSistemi"></span></li>
+        <li>OS Version: <span id="OS_Version"></span></li>
+        <li>OS Release: <span id="OS_Release"></span></li>
+        <li>İşlemci: <span id="İslemci"></span></li>
+        <li>İşlemci Hızı: <span id="İslemciHizi"></span></li>
+        <li>Çekirdek Sayısı: <span id="ÇekirdekSayisi"></span></li>
+        <li>Mantıksal Çekirdek Sayısı: <span id="MantıksalÇekirdekSayisi"></span></li>
+        <li>Disk Kapasitesi: <span id="DiskKapasitesi"></span></li>
+        <li>Disk Kullanılan: <span id="DiskKullanılan"></span></li>
+        <li>Disk Boş: <span id="DiskBoş"></span></li>
+        <li>Kullanılan RAM: <span id="Kullanılan RAM"></span></li>
+        <li>Toplam RAM: <span id="Toplam RAM"></span></li>
+        <li>Kullanılabilir RAM: <span id="Kullanılabilir RAM"></span></li>
+    </ul>
+</body>
+</html>
